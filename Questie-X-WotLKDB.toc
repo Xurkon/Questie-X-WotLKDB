@@ -3,7 +3,7 @@
 ## Title: |cFF5EBAF3Questie|r|cFFDAFAFD-X|r |cFF00FF00WotLK Database|r
 ## Notes: Quest, NPC, Object and Item database for WotLK 3.3.5
 ## Author: Questie Team
-## Version: 1.1.6
+## Version: 1.1.7
 ## Dependencies: Questie-X
 ## X-DB-Flavor: WotLKDB
 
