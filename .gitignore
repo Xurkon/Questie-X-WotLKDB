@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+package.json
+*.js
+*.ps1
+*.txt
+*.md
+!README.md
+!CHANGELOG.md
