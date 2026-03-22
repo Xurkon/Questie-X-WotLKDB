@@ -2,6 +2,50 @@
 -- This Loader publishes them to globals that QuestieInit:LoadBaseDB() consumes.
 local _, addonTable = ...
 
+-- Helper to merge corrections into the main data tables
+-- This ensures that overrides are applied correctly to the split-table format
+local function merge(base, overrides)
+    if not overrides then return end
+    for id, data in pairs(overrides) do
+        if not base[id] then
+            base[id] = data
+        else
+            for key, value in pairs(data) do
+                base[id][key] = value
+            end
+        end
+    end
+end
+
+-- Apply all corrections before exporting to globals
+local function applyAllCorrections()
+    if not QuestieLoader then return end
+
+    local modules = {
+        { name = "QuestieTBCQuestFixes",    target = addonTable.questData,  methods = {"Load", "LoadFactionFixes"} },
+        { name = "QuestieTBCNpcFixes",      target = addonTable.npcData,    methods = {"Load", "LoadFactionFixes"} },
+        { name = "QuestieTBCItemFixes",     target = addonTable.itemData,   methods = {"Load", "LoadFactionFixes"} },
+        { name = "QuestieTBCObjectFixes",   target = addonTable.objectData, methods = {"Load", "LoadFactionFixes"} },
+        { name = "QuestieWotlkQuestFixes",  target = addonTable.questData,  methods = {"Load"} },
+        { name = "QuestieWotlkNpcFixes",    target = addonTable.npcData,    methods = {"Load", "LoadFactionFixes", "LoadAutomatics"} },
+        { name = "QuestieWotlkItemFixes",   target = addonTable.itemData,   methods = {"Load", "LoadFactionFixes"} },
+        { name = "QuestieWotlkObjectFixes", target = addonTable.objectData, methods = {"Load", "LoadFactionFixes"} },
+    }
+
+    for _, modInfo in ipairs(modules) do
+        local mod = QuestieLoader:ImportModule(modInfo.name)
+        if mod then
+            for _, methodName in ipairs(modInfo.methods) do
+                if mod[methodName] then
+                    merge(modInfo.target, mod[methodName](mod))
+                end
+            end
+        end
+    end
+end
+
+applyAllCorrections()
+
 _G.QuestieX_WotLKDB_npc = addonTable.npcData
 _G.QuestieX_WotLKDB_item = addonTable.itemData
 _G.QuestieX_WotLKDB_object = addonTable.objectData
