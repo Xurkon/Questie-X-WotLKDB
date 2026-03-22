@@ -1,6 +1,18 @@
--- WotLK DB split-files populate QuestieX_WotLKDB_* globals at addon load time.
--- QuestieInit:LoadBaseDB() consumes those globals directly at init time.
--- This Loader only registers the plugin. Counts are stored by LoadBaseDB()
+-- WotLK DB split-files populate addonTable at addon load time.
+-- This Loader publishes them to globals that QuestieInit:LoadBaseDB() consumes.
+local _, addonTable = ...
+
+_G.QuestieX_WotLKDB_npc = addonTable.npcData
+_G.QuestieX_WotLKDB_item = addonTable.itemData
+_G.QuestieX_WotLKDB_object = addonTable.objectData
+_G.QuestieX_WotLKDB_quest = addonTable.questData
+
+_G.QuestieX_WotLKDB_npcKeys = addonTable.npcKeys
+_G.QuestieX_WotLKDB_itemKeys = addonTable.itemKeys
+_G.QuestieX_WotLKDB_objectKeys = addonTable.objectKeys
+_G.QuestieX_WotLKDB_questKeys = addonTable.questKeys
+
+-- This Loader also registers the plugin. Counts are stored by LoadBaseDB()
 -- into _G.QuestieX_WotLKDB_Counts and read by the Database options panel.
 
 local _wotlkDBFrame = CreateFrame("Frame")

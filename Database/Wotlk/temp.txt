@@ -1,0 +1,22 @@
+-- AUTO GENERATED FILE! DO NOT EDIT!
+if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cFFFFAA00[WotLKDB] wotlkQuestDB.lua FILE STARTED") end
+
+---@type QuestieDB
+if not QuestieLoader then
+    if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cFFFF4444[WotLKDB] QuestieLoader is nil!") end
+    return
+end
+local QuestieDB = QuestieLoader:ImportModule("QuestieDB");
+if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("|cFF44FF44[WotLKDB] wotlkQuestDB.lua loaded, QuestieDB=" .. tostring(QuestieDB)) end
+
+QuestieDB.questKeys = {
+    ['name'] = 1, -- string
+    ['startedBy'] = 2, -- table
+        --['creatureStart'] = 1, -- table {creature(int),...}
+        --['objectStart'] = 2, -- table {object(int),...}
+        --['itemStart'] = 3, -- table {item(int),...}
+    ['finishedBy'] = 3, -- table
+        --['creatureEnd'] = 1, -- table {creature(int),...}
+        --['objectEnd'] = 2, -- table {object(int),...}
+    ['requiredLevel'] = 4, -- int
+    ['questLe
