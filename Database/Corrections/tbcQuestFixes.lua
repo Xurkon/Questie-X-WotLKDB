@@ -5296,6 +5296,7 @@ function QuestieTBCQuestFixes:Load()
 end
 
 function _QuestieTBCQuestFixes:InsertMissingQuestIds()
+    if type(QuestieDB.questData) ~= "table" then return end
     QuestieDB.questData[12192] = {} -- This One Time, When I Was Drunk... (Horde)
     QuestieDB.questData[12420] = {} -- Brew of the Month Club (Alliance)
     QuestieDB.questData[12421] = {} -- Brew of the Month Club (Horde)

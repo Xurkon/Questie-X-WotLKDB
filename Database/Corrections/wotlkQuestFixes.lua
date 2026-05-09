@@ -7050,6 +7050,7 @@ function QuestieWotlkQuestFixes:Load()
 end
 
 function _QuestieWotlkQuestFixes:InsertMissingQuestIds()
+    if type(QuestieDB.questData) ~= "table" then return end
 
     -- Alliance boosted quests
     QuestieDB.questData[70395] = {} -- A New Beginning
