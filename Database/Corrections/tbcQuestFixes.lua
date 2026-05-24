@@ -576,7 +576,6 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,
         },
         [8328] = {
-            [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,
         },
         [8330] = {
             [questKeys.preQuestSingle] = {},
@@ -986,7 +985,6 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_LOOT, l10n("Use the Sanctified Crystal against a wounded Uncontrolled Voidwalker"), 0, {{"monster", 16975}}}},
         },
         [9392] = {
-            [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,
         },
         [9397] = {
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Disturb the nest"), 0, {{"object", 181582}}}},
